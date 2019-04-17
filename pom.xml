@@ -20,7 +20,7 @@
         <module>zhangcan-amqp</module>
         <module>zhangcan-hbase</module>
         <module>zhangcan-jedis</module>
-        <module>zhangcan-hbased-shade</module>
+        <module>zhangcan-hbase-shade</module>
     </modules>
 
 

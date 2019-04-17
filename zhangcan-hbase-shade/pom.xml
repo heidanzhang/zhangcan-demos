@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.zhang.can</groupId>
-    <artifactId>zhangcan-hbase-dshade</artifactId>
+    <artifactId>zhangcan-hbase-shade</artifactId>
 
 
     <properties>
