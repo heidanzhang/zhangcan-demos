@@ -3,6 +3,10 @@
 
 #idea file
 *.yml
+*.yml
+*.xml
+*.iml
+!*Mapper.yml
 
 # Log file
 *.log
