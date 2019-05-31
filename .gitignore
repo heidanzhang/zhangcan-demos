@@ -6,7 +6,7 @@
 *.yml
 *.xml
 *.iml
-!*Mapper.yml
+!*Mapper.xml
 
 # Log file
 *.log
