@@ -10,8 +10,11 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.hadoop.hbase.HbaseTemplate;
-import org.springframework.data.hadoop.hbase.RowMapper;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import org.apache.hadoop.hbase.filter.CompareFilter;
+import org.apache.hadoop.hbase.filter.SubstringComparator;
+import org.apache.hadoop.hbase.filter.RowFilter;
 
 import java.util.*;
 
@@ -37,7 +40,7 @@ public class HbaseTest {
     @Test
     public void testHbase1() throws Exception {
 
-        TreeMap treeMap = this.getListRowBy(2586,"2019-01-08 17:01:12.00","2019-01-11 17:01:12.00");
+        TreeMap treeMap = this.getListRowBy(2275,"2019-04-07 17:01:12","2019-04-11 17:01:12");
         treeMap.forEach((k,v)->{
             System.out.println(k+"="+v);
         });
@@ -55,6 +58,7 @@ public class HbaseTest {
     *@return java.util.List<java.util.Map>
     **/
     public List<Map> getListRow(Integer carId,String datetime,String endtime){
+        System.out.println("dd");
         Scan scan = new Scan();
         String startRow = null;
         String endRow = null;
@@ -95,10 +99,11 @@ public class HbaseTest {
         ArrayList<Filter> listForFilters = new ArrayList<Filter>();
         SingleColumnValueFilter singleColumnValueFilter1 = new SingleColumnValueFilter("f2".getBytes(),"eventTime".getBytes(),CompareFilter.CompareOp.GREATER_OR_EQUAL,new BinaryComparator(datetime.getBytes()));
         SingleColumnValueFilter singleColumnValueFilter2 = new SingleColumnValueFilter("f2".getBytes(),"eventTime".getBytes(),CompareFilter.CompareOp.LESS_OR_EQUAL,new BinaryComparator(endtime.getBytes()));
-        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.EQUAL,new SubstringComparator(carId+""));
+        RowFilter rowFilter = new RowFilter(CompareFilter.CompareOp.EQUAL,new SubstringComparator(StringUtils.reverse(carId+"")));
         listForFilters.add(singleColumnValueFilter1);
         listForFilters.add(singleColumnValueFilter2);
         listForFilters.add(rowFilter);
+        //listForFilters.add(rowFilter);
         Filter filterList = new FilterList(FilterList.Operator.MUST_PASS_ALL,
                 listForFilters);
         scan.setFilter(filterList);
