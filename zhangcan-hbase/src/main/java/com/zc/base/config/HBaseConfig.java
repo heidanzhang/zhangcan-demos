@@ -4,7 +4,6 @@ import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.hadoop.hbase.HbaseTemplate;
 
 import java.util.Map;
 import java.util.Set;
@@ -23,7 +22,7 @@ public class HBaseConfig {
         this.properties = properties;
     }
 
-    @Bean
+/*    @Bean
     public HbaseTemplate hbaseTemplate() {
         HbaseTemplate hbaseTemplate =new HbaseTemplate();
         try {
@@ -34,8 +33,10 @@ public class HBaseConfig {
             e.printStackTrace();
         }
         return hbaseTemplate;
-    }
+    }*/
 
+
+    @Bean
     public org.apache.hadoop.conf.Configuration configuration() {
 
         org.apache.hadoop.conf.Configuration configuration = HBaseConfiguration.create();

@@ -1,3 +1,4 @@
+import com.google.common.primitives.UnsignedInts;
 import net.minidev.json.JSONObject;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.junit.Test;
@@ -7,9 +8,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.math.BigInteger;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -110,4 +109,88 @@ public class TreeMapTest {
 
     }
 
+    @Test
+    public void testTime(){
+        Long second = 61L;
+
+        StringBuffer stringBuffer = new StringBuffer();
+
+        long day=0,hour=0,minute=0;
+
+        day = second/(3600*24);
+        if(day>=1){
+            hour = (second-day*3600*24)/3600;
+        }else{
+            hour = second/3600;
+        }
+        minute = (second-day*3600*24-hour*3600)/60;
+
+        if(day>=1){
+            stringBuffer.append(day+"天");
+        }if(hour>=1){
+            stringBuffer.append(hour+"时");
+        }if(minute>=1){
+            stringBuffer.append(minute+"分");
+        }
+        System.out.println(stringBuffer.toString());
+    }
+
+    @Test
+    public void testFor(){
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+
+        for(int a = list.size()-1; a>=1; a--){
+            int i = a;
+            System.out.println(i);
+        }
+    }
+    @Test
+    public void testUnsignedInt(){
+        Integer notReallyInt = UnsignedInts.parseUnsignedInt("4294967294");
+        System.out.println(notReallyInt);
+        String s =  Integer.toBinaryString(notReallyInt);
+        System.out.println(s);
+        System.out.println(Integer.parseInt(s.charAt(30)+""));
+
+    }
+
+    @Test
+    public void test() throws ParseException {
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar sss = Calendar.getInstance();
+        sss.set(Calendar.MONTH,5);
+        String dd = simpleDateFormat.format(sss.getTime());
+        Date ss = simpleDateFormat.parse(dd);
+        Date date = this.getMonthLastDay(ss);
+        //上月底的时间
+        Date yestmonth = date;
+        System.out.println("上月时间="+simpleDateFormat.format(yestmonth));
+
+        Calendar calendar1 = Calendar.getInstance();
+        calendar1.setTime(date);
+        calendar1.add(Calendar.MONTH,-1);
+        //上上月底的时间
+        Date preMonth = calendar1.getTime();
+        Date predate = this.getMonthLastDay(preMonth);
+        System.out.println("上上月时间="+simpleDateFormat.format(predate));
+
+    }
+
+    public static Date getMonthLastDay(Date date){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.MONTH,1);
+        calendar.set(Calendar.DAY_OF_MONTH,0);
+        return calendar.getTime();
+    }
+
+
+    @Test
+    public void testString(){
+        String sendTo = "1,2";
+        System.out.println(sendTo.indexOf("2"));
+    }
 }

@@ -2,7 +2,7 @@ package com.zc.base;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * @author aaa
@@ -10,12 +10,13 @@ import org.springframework.cache.annotation.EnableCaching;
  * @Date: 2019/2/21 17:48
  * @Description:
  */
-@EnableCaching
+@Configuration
 @SpringBootApplication
-public class SpringCacheApplication {
+public class SpringElasticsearchApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringCacheApplication.class, args);
+        SpringApplication.run(SpringElasticsearchApplication.class, args);
     }
+
 
 }

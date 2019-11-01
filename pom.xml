@@ -8,7 +8,7 @@
     <parent>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-parent</artifactId>
-        <version>Edgware.SR3</version>
+        <version>Greenwich.SR3</version>
     </parent>
 
     <groupId>com.zhang.can</groupId>
@@ -22,6 +22,7 @@
         <module>zhangcan-jedis</module>
         <module>zhangcan-hbase-dshade</module>
         <module>zhangcan-cache</module>
+        <module>zhangcan-elasticsearch</module>
     </modules>
 
 

@@ -16,15 +16,40 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.hadoop.version>2.2.0.RELEASE</spring.hadoop.version>
-        <hadoop.version>2.6.0</hadoop.version>
+        <hadoop.version>2.2.1.RELEASE</hadoop.version>
         <hbase.version>1.2.6</hbase.version>
     </properties>
 
     <dependencies>
-        <dependency>
+        <!--自己定制得格式化guaua包路径得包,里面包含得第三方jar太多,包冲突多不建议使用-->
+        <!--<dependency>
             <groupId>com.zhang.can</groupId>
             <artifactId>zhangcan-hbase-dshade</artifactId>
             <version>1.0-SNAPSHOT</version>
+        </dependency>-->
+<!--        <dependency>  里面包含得第三方jar太多,包冲突多不建议使用-guaua版本得问题,和tomcat jar冲突 启动不起来;
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-hadoop</artifactId>
+            <version>${hadoop.version}</version>
+        </dependency>-->
+        <dependency>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase-client</artifactId>
+            <version>${hbase.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>log4j</groupId>
+                    <artifactId>log4j</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-lang3</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 

@@ -10,8 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.StopWatch;
 import org.springframework.util.concurrent.ListenableFuture;
 
-import java.util.Date;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @Auther: zhangcan
@@ -156,5 +155,104 @@ public class KafkaTest {
         System.out.println(a==b);
         Long cache[] = new Long[-(-128) + 127 + 1];
         System.out.println(cache.length);
+    }
+    /**
+    *@author zhangcan
+    *@Description 测试随机数
+    *@Date 19:10 2019/6/19
+    *@Param []
+    *@return void
+    **/
+    @Test
+    public void testRandom(){
+        Random random = new Random();
+        float f = random.nextFloat();
+        System.out.println(f);
+    }
+    @Test
+    public void testFor2(){
+        for (int i=100; i >0 ; i--) {
+            System.out.println(i);
+        }
+    }
+    @Test
+    public void testInt(){
+        Integer d = 3000;
+        byte[] bytes = tolh(3000);
+        System.out.println(Integer.toBinaryString(d));
+        for (byte b:bytes){
+            System.out.println(b);
+        }
+
+    }
+
+
+    /**
+    *@author zhangcan
+    *@Description int 转成字节;
+    *@Date 15:49 2019/7/23
+    *@Param [n]
+    *@return byte[]
+    **/
+    public static byte[] tolh(int n) {
+        byte[] b = new byte[4];
+        b[3] = (byte) (n & 0xff);
+        b[2] = (byte) (n >> 8 & 0xff);
+        b[1] = (byte) (n >> 16 & 0xff);
+        b[0] = (byte) (n >> 24 & 0xff);
+        return b;
+    }
+    /**
+    *@author zhangcan
+    *@Description
+    *@Date 14:44 2019/7/25
+    *@Param []
+    *@return void
+    **/
+    @Test
+    public void testTreeMap(){
+        Integer s1 = 1;
+        Integer s2 = 0;
+        Integer s3 = 3;
+        Integer s4 = 4;
+        Integer s5 = 5;
+        Integer s6 = 6;
+        Integer s7 = 7;
+        Integer s8 = 8;
+        Integer s9 = 0;
+        Integer s10 = 10;
+        Integer s11 = 11;
+        Integer s12 = 12;
+
+
+        List<Integer> treeMap=new ArrayList();
+
+        treeMap.add(s1);
+        treeMap.add(s2);
+        treeMap.add(s3);
+        treeMap.add(s4);
+        treeMap.add(s5);
+        treeMap.add(s6);
+        treeMap.add(s7);
+        treeMap.add(s8);
+        treeMap.add(s9);
+        treeMap.add(s10);
+        treeMap.add(s11);
+        treeMap.add(s12);
+
+        Collections.sort(treeMap);
+        Collections.reverse(treeMap);
+        for (Integer i :
+                treeMap) {
+            System.out.println(i);
+        }
+        
+    }
+    @Test
+    public void testString(){
+        String a = "abc";
+        String b = "abc";
+        System.out.println(a.hashCode());
+        System.out.println(b.hashCode());
     }
 }
