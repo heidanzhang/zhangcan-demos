@@ -100,13 +100,17 @@ public class TreeMapTest {
 
     @Test
     public void testByte(){
-        byte a = 127;
+        byte a = -1;
         int b = 0x11;
         byte c = 0x1F;
         System.out.println(a);
         System.out.println(b);
         System.out.println(c);
-
+        System.out.println(Integer.toBinaryString(a));
+        Integer d = 2300000;
+        System.out.println(Integer.toBinaryString(d));
+        System.out.println(Integer.toBinaryString(-1));
+        System.out.println(d.byteValue());
     }
 
     @Test
