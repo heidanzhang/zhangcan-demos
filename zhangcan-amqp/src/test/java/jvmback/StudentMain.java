@@ -15,12 +15,18 @@ public class StudentMain {
 
     public static void main(String[] args){
         Student student = StudentFactory.Student();
+        String ss;
+        ss = student.getName();
+        log.info("hash值1="+ss.hashCode()+"");
+        student.setName("dd");
+        log.info("hash值2="+ss.hashCode()+"");
+        log.info("hash值3="+student.getName().hashCode()+"");
         log.info("===开始了===");
         log.info("第一个学生的姓名:{},年龄{}",student.getName(),student.getAge());
         List<String> li = new ArrayList<>();
-        for (int i=0; i <1000000 ; i++) {
+/*        for (int i=0; i <1000000 ; i++) {
             StudentFactory.Student();
-        }
+        }*/
         log.info("===结束了==="+student);
         /**
             结论:student调用外部方法生成，接下来的程序中如果不使用该student对象，该student会被回收，如果使用，则不会被回收
