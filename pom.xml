@@ -23,6 +23,7 @@
         <module>zhangcan-hbase-dshade</module>
         <module>zhangcan-cache</module>
         <module>zhangcan-elasticsearch</module>
+        <module>zhangcan-bigdata</module>
     </modules>
 
 
